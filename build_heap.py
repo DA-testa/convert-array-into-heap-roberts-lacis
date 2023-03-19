@@ -5,10 +5,23 @@ def build_heap(data):
     swaps = []
     # TODO: Creat heap and heap sort
     # try to achieve  O(n) and not O(n2)
-
-
+    for i in range(len(data) // 2, -1, -1):
+        siftdown(i,data,swaps)
+        i-=1
     return swaps
 
+def siftdown(i,data,swaps):
+    l = 2*i+1
+    r = 2*i+2
+    smallest = i
+    if l < len(data) and data[smallest] > data[l]:
+        smallest = l
+    if r < len(data) and data[smallest] > data[r]:
+        smallest = r
+    if smallest != i:
+        data[i],data[smallest] = data[smallest],data[i]
+        swaps.append([i,smallest])
+        siftdown(smallest,data,swaps)
 
 def main():
     
@@ -16,10 +29,15 @@ def main():
     # add another input for I or F 
     # first two tests are from keyboard, third test is from a file
 
-
-    # input from keyboard
-    n = int(input())
-    data = list(map(int, input().split()))
+    type = input()
+    if "I" in type:
+        n = int(input())
+        data = list(map(int, input().split()))
+    else:
+        file = "tests/" + input()
+        with open(file, 'r', encoding="utf-8") as f:
+            n = int(f.readline().strip())
+            data = list(map(int,f.readline().strip().split()))
 
     # checks if lenght of data is the same as the said lenght
     assert len(data) == n
