@@ -43,11 +43,11 @@ def main():
     # first two tests are from keyboard, third test is from a file
 
     type = input()
-    if "i" in type:
+    if "I" in type:
         n = int(input())
         data = list(map(int, input().split()))
     else:
-        file = "/tests" + input()
+        file = "/tests/" + input()
         with open(file, 'r') as f:
             n = int(f.readline().strip())
             data = list(map(int,f.readline().strip().split()))
