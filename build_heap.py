@@ -5,10 +5,36 @@ def build_heap(data):
     swaps = []
     # TODO: Creat heap and heap sort
     # try to achieve  O(n) and not O(n2)
-
-
+    i = 0
+    heap = False
+    temp=True
+    while heap == False:
+        l = 2*i+1
+        r = 2*i+2
+        print(data)
+        #print("Index: "+str(i))
+        #print("Right: "+str(r)+" ;Left: "+str(l))
+        smallest = i
+        if l < len(data):
+            if data[i] > data[l]:
+                smallest = l
+        if r < len(data):
+            if data[i] > data[r]:
+                smallest = r
+        #print("Smallest: "+str(smallest))
+        if smallest != i:
+            temp=False
+            data[i],data[smallest] = data[smallest],data[i]
+            swaps.append([i,smallest])
+        if i==len(data):
+            if temp==True:
+                heap=True
+            else:
+                i = 0
+                temp=True
+        else:
+            i+=1
     return swaps
-
 
 def main():
     
