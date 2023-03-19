@@ -11,9 +11,6 @@ def build_heap(data):
     while heap == False:
         l = 2*i+1
         r = 2*i+2
-        print(data)
-        #print("Index: "+str(i))
-        #print("Right: "+str(r)+" ;Left: "+str(l))
         smallest = i
         if l < len(data):
             if data[i] > data[l]:
@@ -21,7 +18,6 @@ def build_heap(data):
         if r < len(data):
             if data[i] > data[r]:
                 smallest = r
-        #print("Smallest: "+str(smallest))
         if smallest != i:
             temp=False
             data[i],data[smallest] = data[smallest],data[i]
