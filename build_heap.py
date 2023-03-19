@@ -5,32 +5,23 @@ def build_heap(data):
     swaps = []
     # TODO: Creat heap and heap sort
     # try to achieve  O(n) and not O(n2)
-    i = 0
-    heap = False
-    temp=True
-    while heap == False:
-        l = 2*i+1
-        r = 2*i+2
-        smallest = i
-        if l < len(data):
-            if data[i] > data[l]:
-                smallest = l
-        if r < len(data):
-            if data[i] > data[r]:
-                smallest = r
-        if smallest != i:
-            temp=False
-            data[i],data[smallest] = data[smallest],data[i]
-            swaps.append([i,smallest])
-        if i==len(data):
-            if temp==True:
-                heap=True
-            else:
-                i = 0
-                temp=True
-        else:
-            i+=1
+    for i in range(len(data) // 2, -1, -1):
+        siftdown(i,data,swaps)
+        i-=1
     return swaps
+
+def siftdown(i,data,swaps):
+    l = 2*i+1
+    r = 2*i+2
+    smallest = i
+    if l < len(data) and data[smallest] > data[l]:
+        smallest = l
+    if r < len(data) and data[smallest] > data[r]:
+        smallest = r
+    if smallest != i:
+        data[i],data[smallest] = data[smallest],data[i]
+        swaps.append([i,smallest])
+        siftdown(smallest,data,swaps)
 
 def main():
     
