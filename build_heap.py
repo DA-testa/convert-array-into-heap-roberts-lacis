@@ -42,10 +42,15 @@ def main():
     # add another input for I or F 
     # first two tests are from keyboard, third test is from a file
 
-
-    # input from keyboard
-    n = int(input())
-    data = list(map(int, input().split()))
+    type = input()
+    if "i" in type:
+        n = int(input())
+        data = list(map(int, input().split()))
+    else:
+        file = "/tests" + input()
+        with open(file, 'r') as f:
+            n = int(f.readline().strip())
+            data = list(map(int,f.readline().strip().split()))
 
     # checks if lenght of data is the same as the said lenght
     assert len(data) == n
