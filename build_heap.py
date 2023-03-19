@@ -43,8 +43,8 @@ def main():
         n = int(input())
         data = list(map(int, input().split()))
     else:
-        file = "/tests/" + input()
-        with open(file, 'r') as f:
+        file = "/tests" + input()
+        with open(file, 'r', encoding="utf-8") as f:
             n = int(f.readline().strip())
             data = list(map(int,f.readline().strip().split()))
 
